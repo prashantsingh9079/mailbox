@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState,useRef } from 'react'
 import { Button , Card} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginComponent() {
     const [newUser,setNewUser] = useState(true);
-
+    const navigate = useNavigate()
     const email = useRef()
     const pwd = useRef();
     const confirmPwd = useRef()
@@ -65,6 +66,7 @@ export default function LoginComponent() {
             const updatedEmail = email.current.value.split('@')[0]
             localStorage.setItem('email',updatedEmail)
             alert("signed in")
+            navigate('/home')
         }
     }
 
